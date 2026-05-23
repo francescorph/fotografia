@@ -20,6 +20,74 @@
             text-align: center;
         }
 
+        /* --- STILE DEL MENU HAMBURGER --- */
+        .menu-btn {
+            position: fixed;
+            top: 25px;
+            right: 30px;
+            font-size: 30px;
+            color: #f5f5f5;
+            cursor: pointer;
+            z-index: 100;
+            transition: color 0.3s ease;
+        }
+
+        .menu-btn:hover {
+            color: #a0a0a0;
+        }
+
+        .menu-overlay {
+            height: 100%;
+            width: 0; /* Parte chiuso/invisibile */
+            position: fixed;
+            z-index: 200;
+            top: 0;
+            right: 0;
+            background-color: rgba(5, 5, 5, 0.98); /* Sfondo nero con leggera trasparenza */
+            overflow-x: hidden;
+            transition: 0.4s ease; /* Animazione di apertura fluida */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .close-btn:hover {
+            color: #f5f5f5;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+        }
+
+        .menu-content a {
+            text-decoration: none;
+            font-size: 2rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+
+        .menu-content a:hover {
+            color: #f5f5f5;
+        }
+        /* --- FINE STILE MENU HAMBURGER --- */
+
         .home-container {
             max-width: 600px;
             padding: 20px;
@@ -79,6 +147,17 @@
 </head>
 <body>
 
+    <div class="menu-btn" onclick="apriMenu()">☰</div>
+
+    <div id="menuOverlay" class="menu-overlay">
+        <a href="javascript:void(0)" class="close-btn" onclick="chiudiMenu()">✕</a>
+        <div class="menu-content">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Le mie foto</a>
+            <a href="mailto:latuamail@esempio.com">Contatti</a>
+        </div>
+    </div>
+
     <div class="home-container">
         <header>
             <h1>Francesco Romano</h1>
@@ -89,9 +168,18 @@
 
         <div class="social-links">
             <a href="https://instagram.com/" target="_blank">Instagram</a>
-            <a href="mailto:tuamail@esempio.com">Email</a>
+            <a href="mailto:latuamail@esempio.com">Email</a>
         </div>
     </div>
+
+    <script>
+        function apriMenu() {
+            document.getElementById("menuOverlay").style.width = "100%";
+        }
+        function chiudiMenu() {
+            document.getElementById("menuOverlay").style.width = "0%";
+        }
+    </script>
 
 </body>
 </html>
