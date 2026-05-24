@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Francesco Romano — Home</title>
     <style>
+        * { box-sizing: border-box; }
         body {
             background-color: #050505;
             background-image: url("data:image/svg+xml,%3Csvg width='300' height='300' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='50' cy='50' r='1' fill='%23ffffff' opacity='0.4'/%3E%3Ccircle cx='150' cy='250' r='1.5' fill='%23ffffff' opacity='0.7'/%3E%3Ccircle cx='250' cy='100' r='1' fill='%23ffffff' opacity='0.5'/%3E%3Ccircle cx='80' cy='180' r='0.5' fill='%23ffffff' opacity='0.3'/%3E%3Ccircle cx='220' cy='190' r='2' fill='%23ffffff' opacity='0.2'/%3E%3C/svg%3E");
@@ -20,7 +21,7 @@
             text-align: center;
         }
 
-        /* --- STILE DEL MENU HAMBURGER --- */
+        /* MENU HAMBURGER */
         .menu-btn {
             position: fixed;
             top: 25px;
@@ -31,10 +32,129 @@
             z-index: 100;
             transition: color 0.3s ease;
         }
-
-        .menu-btn:hover {
-            color: #a0a0a0;
+        .menu-btn:hover { color: #a0a0a0; }
+        .menu-overlay {
+            height: 100%;
+            width: 0;
+            position: fixed;
+            z-index: 200;
+            top: 0;
+            right: 0;
+            background-color: rgba(5, 5, 5, 0.98);
+            overflow-x: hidden;
+            transition: 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            font-size: 40px;
+            color: #a0a0a0;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover { color: #f5f5f5; }
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 40px;
+        }
+        .menu-content a {
+            text-decoration: none;
+            font-size: 2rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+            transition: color 0.3s ease;
+        }
+        .menu-content a:hover { color: #f5f5f5; }
+
+        /* CONTENUTO HOME */
+        .home-container {
+            max-width: 600px;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+        p.description {
+            font-size: 1.1rem;
+            color: #a0a0a0;
+            line-height: 1.8;
+            font-weight: 300;
+            margin-bottom: 40px;
+        }
+        .enter-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid #f5f5f5;
+            color: #f5f5f5;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-bottom: 50px;
+        }
+        .enter-btn:hover {
+            background-color: #f5f5f5;
+            color: #050505;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .social-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        .social-links a:hover { color: #f5f5f5; }
+    </style>
+</head>
+<body>
+
+    <div class="menu-btn" onclick="apriMenu()">☰</div>
+
+    <div id="menuOverlay" class="menu-overlay">
+        <a href="javascript:void(0)" class="close-btn" onclick="chiudiMenu()">✕</a>
+        <div class="menu-content">
+            <a href="index.html">Home</a>
+            <a href="portfolio.html">Le mie foto</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </div>
+
+    <div class="home-container">
+        <header>
+            <h1>Francesco Romano</h1>
+            <p class="description">Catturare l'equilibrio tra luce, forme e momenti quotidiani. Questo è il mio archivio fotografico personale.</p>
+        </header>
+        <a href="portfolio.html" class="enter-btn">Esplora il Portfolio</a>
+        <div class="social-links">
+            <a href="https://instagram.com/" target="_blank">Instagram</a>
+            <a href="contatti.html">Contatti</a>
+        </div>
+    </div>
+
+    <script>
+        function apriMenu() { document.getElementById("menuOverlay").style.width = "100%"; }
+        function chiudiMenu() { document.getElementById("menuOverlay").style.width = "0%"; }
+    </script>
+</body>
+</html>        }
 
         .menu-overlay {
             height: 100%;
